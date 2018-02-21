@@ -1,0 +1,29 @@
+{
+  "name": "ui-custom-component",
+  "version": "1.0.0",
+  "description": "Small webpack based boilerplate for getting started with Boomi Flow UI components",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server",
+    "build": "webpack -p"
+  },
+  "author": "Dell Boomi",
+  "license": "MIT",
+  "dependencies": {
+    "@types/react": "^16.0.38",
+    "@types/react-dom": "^16.0.4",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^3.4.1",
+    "css-loader": "^0.28.9",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "source-map-loader": "^0.2.3",
+    "style-loader": "^0.20.2",
+    "typescript": "^2.7.2",
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.1",
+    "write-file-webpack-plugin": "^4.2.0"
+  }
+}
