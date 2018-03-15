@@ -5,7 +5,7 @@ const WriteFilePlugin = require('write-file-webpack-plugin');
 module.exports = {
     entry: "./src/index.tsx",
     output: {
-        filename: 'custom-component.js',
+        filename: 'custom-components.js',
         path: path.resolve(__dirname, 'dist')
     },
     devtool: 'inline-source-map',
@@ -34,6 +34,6 @@ module.exports = {
     },
     plugins: [
         new WriteFilePlugin(),
-        new ExtractTextPlugin("custom-component.css"),
+        new ExtractTextPlugin("custom-components.css"),
     ]
 };
