@@ -18,7 +18,7 @@ Create the custom component in a new `.tsx` file, then re-export them in `index.
 
 ## Testing
 
-You can start the local development server with `npm run dev`. This will serve the compiled javascript and css at `http://localhost:8080/custom-component.js` and `http://localhost:8080/custom-component.css`.
+You can start the local development server with `npm run dev`. This will serve the compiled javascript and css at `http://localhost:8080/custom-components.js` and `http://localhost:8080/custom-components.css`.
 
 The easiest way to test a custom component would be to create a custom player then add references to the `custom-components.js` and `custom-components.css` as custom resources, more information on loading custom resources can be found here: https://docs.manywho.com/adding-custom-javascript-and-stylesheets/
 
