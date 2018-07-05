@@ -5,20 +5,39 @@ const WriteFilePlugin = require('write-file-webpack-plugin');
 module.exports = {
     entry: "./src/index.tsx",
     output: {
-        filename: 'custom-components.js',
-        path: path.resolve(__dirname, 'dist')
+        filename: 'custom-component.js',
+        path: path.resolve(__dirname, 'build')
     },
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: './dist'
+        contentBase: './build'
     },
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".json"]
     },
     module: {
         rules: [
-            { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
-            { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
+            {
+                test: /\.tsx?$/,
+                enforce: 'pre',
+                use: [
+                    {
+                        loader: 'tslint-loader',
+                        options: {
+                            fix: true
+                        }
+                    }
+                ]
+            },
+            { 
+                test: /\.tsx?$/, 
+                loader: "awesome-typescript-loader" 
+            },
+            { 
+                test: /\.js$/, 
+                enforce: "pre", 
+                loader: "source-map-loader" 
+            },
             { 
                 test:/\.css$/,
                 use: ExtractTextPlugin.extract({
@@ -34,6 +53,7 @@ module.exports = {
     },
     plugins: [
         new WriteFilePlugin(),
-        new ExtractTextPlugin("custom-components.css"),
-    ]
+        new ExtractTextPlugin("custom-component.css"),
+    ],
+    watch: true
 };

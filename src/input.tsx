@@ -6,9 +6,9 @@ class CustomInput extends React.Component<any, any> {
 
     onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         manywho.state.setComponent(
-            this.props.id, 
-            { contentValue: e.target.value }, 
-            this.props.flowKey, 
+            this.props.id,
+            { contentValue: e.target.value },
+            this.props.flowKey,
             true,
         );
         this.forceUpdate();
@@ -16,12 +16,12 @@ class CustomInput extends React.Component<any, any> {
 
     onBlur = () => {
         manywho.component.handleEvent(
-            this, 
+            this,
             manywho.model.getComponent(
-                this.props.id, 
+                this.props.id,
                 this.props.flowKey,
-            ), 
-            this.props.flowKey
+            ),
+            this.props.flowKey,
         );
     }
 
@@ -30,11 +30,11 @@ class CustomInput extends React.Component<any, any> {
         const state = manywho.state.getComponent(this.props.id, this.props.flowKey) || {};
 
         const contentValue =
-            state && state.contentValue !== undefined ? 
+            state && state.contentValue !== undefined ?
             state.contentValue :
             model.contentValue;
 
-        return <input type="text" value={contentValue} onChange={this.onChange} onBlur={this.onBlur} />
+        return <input type="text" value={contentValue} onChange={this.onChange} onBlur={this.onBlur} />;
     }
 }
 

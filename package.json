@@ -5,25 +5,65 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server",
-    "build": "webpack -p"
+    "debug": "ngrok http 8080 -host-header=\"localhost:8080\"",
+    "build": "webpack -p",
+    "test-unit": "jest --watch",
+    "test-integration": "testcafe-live chrome ./src/__tests__/integration"
   },
   "author": "Dell Boomi",
   "license": "MIT",
   "dependencies": {
-    "@types/react": "^16.0.38",
-    "@types/react-dom": "^16.0.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
   "devDependencies": {
+    "@types/enzyme": "^3.1.11",
+    "@types/enzyme-adapter-react-16": "^1.0.2",
+    "@types/jest": "^23.1.4",
+    "@types/react": "^16.0.38",
+    "@types/react-dom": "^16.0.4",
     "awesome-typescript-loader": "^3.4.1",
     "css-loader": "^0.28.9",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "extract-text-webpack-plugin": "^3.0.2",
+    "jest": "^23.3.0",
+    "ngrok": "^3.0.1",
+    "react-test-renderer": "^16.4.1",
     "source-map-loader": "^0.2.3",
     "style-loader": "^0.20.2",
+    "testcafe": "^0.20.4",
+    "testcafe-live": "^0.1.3",
+    "ts-jest": "^23.0.0",
+    "tslint": "^5.10.0",
+    "tslint-loader": "^3.6.0",
+    "tslint-react": "^3.6.0",
     "typescript": "^2.7.2",
     "webpack": "^3.11.0",
     "webpack-dev-server": "^2.11.1",
     "write-file-webpack-plugin": "^4.2.0"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "./src/*.tsx",
+      "!**/node_modules/**",
+      "!./src/__test__/**/*.*"
+    ],
+    "setupFiles": [
+      "./mocks/manywho.js"
+    ],
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "/__tests__/unit.*",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.css$": "<rootDir>/mocks/styles.js"
+    }
   }
 }

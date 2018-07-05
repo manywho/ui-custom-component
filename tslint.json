@@ -1,0 +1,16 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:latest",
+        "tslint-react"
+    ],
+    "jsRules": {},
+    "rules": {
+        "member-access": false,
+        "quotemark": [true, "single", "jsx-double"],
+        "no-implicit-dependencies": false
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
