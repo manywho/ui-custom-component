@@ -124,7 +124,7 @@ const baseUrl = 'https://flow.manywho.com';
             });
         }
 
-        let customResources = 'customResources = [';
+        let customResources = 'customResources: [';
         fileNames.forEach(fileName => {
             customResources += `'https://files-manywho-com.s3.amazonaws.com/${tenant.id}/${path.basename(fileName)}',`;
         });
