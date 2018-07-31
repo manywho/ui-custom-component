@@ -129,7 +129,7 @@ const baseUrl = 'https://flow.manywho.com';
             customResources += `'https://files-manywho-com.s3.amazonaws.com/${tenant.id}/${path.basename(fileName)}',`;
         });
         customResources = customResources.slice(0, -1);
-        customResources += '];';
+        customResources += '],';
 
         clipboardy.writeSync(customResources);
         console.log(customResources);

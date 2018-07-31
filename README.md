@@ -27,7 +27,7 @@ By default, the local development server will be made accessible to the internet
 ngrok will provide a url like `https://ad7c2b13.ngrok.io` that will point to `http://localhost:8080`, for example you would add the following as custom resources in a player:
 
 ```
-customResources: ['https://ad7c2b13.ngrok.io/custom-components.js', 'https://ad7c2b13.ngrok.io/custom-components.css']
+customResources: ['https://ad7c2b13.ngrok.io/custom-component.js', 'https://ad7c2b13.ngrok.io/custom-component.css']
 ```
 
 The ngrok url will be dislpayed in the console (just before the webpack output statistics)
