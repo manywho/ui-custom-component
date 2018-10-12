@@ -18,6 +18,16 @@ Create the custom component in a new `.tsx` file, then re-export them in `index.
 
 ## Debugging
 
+### VSCode
+
+This boilerplate includes built in configuration support for debugging in [VSCode](https://code.visualstudio.com/) and is the recommended way to debug.
+
+Select the `Debug` configuration then hit **Start Debugging**. This will start up the configured webpack-dev-server then open an instance of Chrome pointing to the included player (built from `template.html`). You can then setup breakpoints in VSCode in your custom component code.
+
+The tenant, flow and flow version that used in the built-in player can be configured by editing the `flow` section of `package.json`.
+
+### Without VSCode
+
 You can start the local development server with `npm start`. This will serve the compiled javascript and css at `http://localhost:8080/custom-component.js` and `http://localhost:8080/custom-component.css`.
 
 The easiest way to test a custom component would be to create a custom player then add references to the `custom-components.js` and `custom-components.css` as custom resources, more information on loading custom resources can be found here: https://docs.manywho.com/adding-custom-javascript-and-stylesheets/
@@ -58,6 +68,8 @@ Documentation on supported browsers can be found here: http://devexpress.github.
 
 ## Deploying
 
+You can change the generated filenames from `custom-components.js` and `custom-components.css` by editing the `flow.filenames` section of then `package.json` file.
+
 Run the `npm run build` command to create a production build of `custom-components.js` and `custom-components.css`. These can
 be uploaded to your tenants assets by running `npm run upload`, they can then be referenced in a custom player as custom
 resources.
@@ -66,10 +78,3 @@ The bulit `.js` and `.css` files can be hosted anywhere that `flow.manywho.com` 
 assets is a quick and easy way to get started.
 
 > Tenant assets are publically accessible and should not contain any secrets of confidential information!
-
-## Configuration
-
-You can change the generated filenames from `custom-components.js` and `custom-components.css` by editing the `webpack.config.js` file:
-
-- line 10 for `custom-components.js`
-- line 55 for `custom-components.css`
