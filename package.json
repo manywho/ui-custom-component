@@ -34,7 +34,7 @@
     "glob-promise": "^3.4.0",
     "inquirer": "^6.0.0",
     "inquirer-autocomplete-prompt": "^1.0.1",
-    "jest": "^23.3.0",
+    "jest": "^23.6.0",
     "jest-config": "^23.6.0",
     "mime-types": "^2.1.19",
     "ngrock-webpack-plugin": "0.0.2",
