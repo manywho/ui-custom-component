@@ -1,8 +1,9 @@
-declare var manywho: any;
-
 import * as React from 'react';
+import { IComponentProps, IManywho } from './interfaces';
 
-class CustomInput extends React.Component<any, any> {
+declare const manywho: IManywho;
+
+class CustomInput extends React.Component<IComponentProps> {
 
     onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         manywho.state.setComponent(
@@ -22,6 +23,7 @@ class CustomInput extends React.Component<any, any> {
                 this.props.flowKey,
             ),
             this.props.flowKey,
+            null,
         );
     }
 

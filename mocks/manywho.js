@@ -1,4 +1,4 @@
-global.manywho = {
+window.manywho = {
     component: {
         register: jest.fn()
     },
@@ -9,3 +9,5 @@ global.manywho = {
         getComponent: jest.fn().mockReturnValue(null)
     }
 };
+
+//console.log(global.manywho);

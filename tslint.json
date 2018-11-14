@@ -8,7 +8,8 @@
     "rules": {
         "member-access": false,
         "quotemark": [true, "single", "jsx-double"],
-        "no-implicit-dependencies": false
+        "no-implicit-dependencies": false,
+        "no-namespace": false
     },
     "exclude": [
         "node_modules"

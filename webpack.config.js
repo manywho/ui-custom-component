@@ -14,7 +14,7 @@ module.exports = function() {
         },
         devtool: 'inline-source-map',
         resolve: {
-            extensions: [".ts", ".tsx", ".js", ".json"]
+            extensions: [".ts", ".tsx", ".js", ".json"],
         },
         devServer: {
             contentBase: './build'
