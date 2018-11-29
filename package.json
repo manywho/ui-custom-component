@@ -15,6 +15,7 @@
   "author": "Dell Boomi",
   "license": "MIT",
   "dependencies": {
+    "dedent": "^0.7.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2"
   },
@@ -22,6 +23,7 @@
     "@types/enzyme": "^3.1.11",
     "@types/enzyme-adapter-react-16": "^1.0.2",
     "@types/jest": "^23.1.4",
+    "@types/loglevel": "^1.5.3",
     "@types/react": "^16.7.3",
     "@types/react-dom": "^16.0.9",
     "awesome-typescript-loader": "5.2.0",
@@ -74,15 +76,18 @@
       "tsx",
       "js"
     ],
-    "moduleDirectories": ["node_modules", "<rootDir>/src"],
+    "moduleDirectories": [
+      "node_modules",
+      "<rootDir>/src"
+    ],
     "moduleNameMapper": {
       "^.+\\.css$": "<rootDir>/mocks/styles.js"
     }
   },
   "flow": {
-    "tenantId": "88fb88c6-c72a-451a-b3b3-47bab8c8ec41",
-    "id": "b7b2964f-0670-4456-8df7-9af5ad222fa5",
-    "versionId": "6ddadcd9-9c78-4549-8d92-1090be7bcd9c",
+    "tenantId": "d1b3e73f-3f2a-4159-8fbb-ceb11a84e28d",
+    "id": "88b7b053-049b-402d-b614-597bed6a4b78",
+    "versionId": "",
     "filenames": {
       "js": "custom-component.js",
       "css": "custom-component.css"

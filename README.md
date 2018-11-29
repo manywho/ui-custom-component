@@ -16,6 +16,11 @@ This boilerplate includes examples components for:
 
 Create the custom component in a new `.tsx` file, then re-export them in `index.tsx` e.g. `export * from './component';`. Any custom styles can be added in a separate `.css` file which is imported into the `.tsx` file.
 
+### Higher-Order Components
+
+This boillerplate includes 2 higher-order components, in `wrapper.tsx`, `container` and `component` that you can wrap your custom components with (see `input.tsx` for an example). These higher-order
+components will do some work fetching model, state, outcomes, etc for you which will then be passed down as `props` into your custom component.
+
 ## Debugging
 
 ### VSCode

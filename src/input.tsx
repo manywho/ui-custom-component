@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IComponentProps, IManywho } from './interfaces';
+import { component } from './wrapper';
 
 declare const manywho: IManywho;
 
@@ -18,28 +19,22 @@ class CustomInput extends React.Component<IComponentProps> {
     onBlur = () => {
         manywho.component.handleEvent(
             this,
-            manywho.model.getComponent(
-                this.props.id,
-                this.props.flowKey,
-            ),
+            this.props.model,
             this.props.flowKey,
             null,
         );
     }
 
     render() {
-        const model = manywho.model.getComponent(this.props.id, this.props.flowKey);
-        const state = manywho.state.getComponent(this.props.id, this.props.flowKey) || {};
-
         const contentValue =
-            state && state.contentValue !== undefined ?
-            state.contentValue :
-            model.contentValue;
+            this.props.state && this.props.state.contentValue !== undefined ?
+                this.props.state.contentValue :
+                this.props.model.contentValue;
 
-        return <input type="text" value={contentValue} onChange={this.onChange} onBlur={this.onBlur} />;
+        return <input type="text" value={contentValue as string} onChange={this.onChange} onBlur={this.onBlur} />;
     }
 }
 
-manywho.component.register('custom-input', CustomInput);
+manywho.component.register('custom-input', component(CustomInput));
 
 export default CustomInput;
