@@ -296,6 +296,7 @@ export interface IComponentProps extends IComponentPropsBase<IComponentModel> {
     state: State.IComponentValue | null;
     onEvent: (callback?: () => void) => void;
     onChange: (value: string | number | boolean | null, validate?: boolean, push?: boolean) => void;
+    getContentValue: <T extends string | number | boolean>() => T;
 }
 
 export interface IContainerProps extends IComponentPropsBase<IContainerModel> {

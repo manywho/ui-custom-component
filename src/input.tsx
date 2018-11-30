@@ -15,12 +15,14 @@ class CustomInput extends React.Component<IComponentProps> {
     }
 
     render() {
-        const contentValue =
-            (this.props.state && this.props.state.contentValue !== undefined ?
-                this.props.state.contentValue :
-                this.props.model.contentValue) as string;
-
-        return <input type="text" value={contentValue} onChange={this.onChange} onBlur={this.onBlur} />;
+        return (
+            <input
+                type="text"
+                value={this.props.getContentValue<string>()}
+                onChange={this.onChange}
+                onBlur={this.onBlur}
+            />
+        );
     }
 }
 

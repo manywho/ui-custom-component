@@ -13,7 +13,21 @@ describe('Input Component', () => {
 
     it('renders', () => {
         const model = {};
-        const wrapper = shallow(<CustomInput flowKey="flowKey" id="id" model={model as any} state={null} outcomes={null} className={null} onChange={null} onEvent={null} />);
+        const getContentValue = <T extends string | number | boolean>(): T => null;
+
+        const wrapper = shallow(
+            <CustomInput
+                flowKey="flowKey"
+                id="id"
+                model={model as any}
+                state={null}
+                outcomes={null}
+                className={null}
+                onChange={null}
+                onEvent={null}
+                getContentValue={getContentValue}
+            />,
+        );
         expect(wrapper.find('input')).toHaveLength(1);
     });
 

@@ -81,8 +81,15 @@ export const component = (
             );
         };
 
+        const getContentValue = <T extends string | number | boolean>() => {
+            return (this.props.state && this.props.state.contentValue !== undefined ?
+                this.props.state.contentValue :
+                this.props.model.contentValue) as T;
+        };
+
         const props: IComponentProps = {
             ...getProps(id, parentId, flowKey),
+            getContentValue,
             onChange,
             onEvent,
             state: manywho.state.getComponent(id, flowKey),
