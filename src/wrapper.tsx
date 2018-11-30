@@ -56,8 +56,35 @@ export const component = (
     return ({ id, parentId, flowKey }: IComponentIdProps) => {
         const model: IComponentModel = manywho.model.getComponent(id, flowKey);
 
+        const onChange = (value: string | number | boolean | null, validate: boolean = true, push: boolean = true) => {
+            manywho.state.setComponent(id, { contentValue: value }, flowKey, push);
+
+            if (validate) {
+                const state = manywho.state.getComponent(id, flowKey);
+                manywho.state.setComponent(
+                    id,
+                    manywho.validation.validate(model, state, flowKey),
+                    flowKey,
+                    push,
+                );
+            }
+
+            this.forceUpdate();
+        };
+
+        const onEvent = (callback?: () => void) => {
+            manywho.component.handleEvent(
+                this,
+                model,
+                flowKey,
+                callback,
+            );
+        };
+
         const props: IComponentProps = {
             ...getProps(id, parentId, flowKey),
+            onChange,
+            onEvent,
             state: manywho.state.getComponent(id, flowKey),
         };
 

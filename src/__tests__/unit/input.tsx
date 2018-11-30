@@ -13,7 +13,7 @@ describe('Input Component', () => {
 
     it('renders', () => {
         const model = {};
-        const wrapper = shallow(<CustomInput flowKey="flowKey" id="id" model={model as any} state={null} outcomes={null} className={null} />);
+        const wrapper = shallow(<CustomInput flowKey="flowKey" id="id" model={model as any} state={null} outcomes={null} className={null} onChange={null} onEvent={null} />);
         expect(wrapper.find('input')).toHaveLength(1);
     });
 

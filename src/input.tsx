@@ -7,31 +7,20 @@ declare const manywho: IManywho;
 class CustomInput extends React.Component<IComponentProps> {
 
     onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        manywho.state.setComponent(
-            this.props.id,
-            { contentValue: e.target.value },
-            this.props.flowKey,
-            true,
-        );
-        this.forceUpdate();
+        this.props.onChange(e.target.value);
     }
 
     onBlur = () => {
-        manywho.component.handleEvent(
-            this,
-            this.props.model,
-            this.props.flowKey,
-            null,
-        );
+        this.props.onEvent();
     }
 
     render() {
         const contentValue =
-            this.props.state && this.props.state.contentValue !== undefined ?
+            (this.props.state && this.props.state.contentValue !== undefined ?
                 this.props.state.contentValue :
-                this.props.model.contentValue;
+                this.props.model.contentValue) as string;
 
-        return <input type="text" value={contentValue as string} onChange={this.onChange} onBlur={this.onBlur} />;
+        return <input type="text" value={contentValue} onChange={this.onChange} onBlur={this.onBlur} />;
     }
 }
 
