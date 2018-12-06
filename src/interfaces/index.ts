@@ -26,7 +26,7 @@ export interface IManywho {
     connection: typeof Connection;
     engine: typeof Engine;
     formatting: typeof Formatting;
-    kson: typeof Json;
+    json: typeof Json;
     model: typeof Model;
     settings: typeof Settings;
     social: typeof Social;
@@ -297,6 +297,7 @@ export interface IComponentProps extends IComponentPropsBase<IComponentModel> {
     onEvent: (callback?: () => void) => void;
     onChange: (value: string | number | boolean | null, validate?: boolean, push?: boolean) => void;
     getContentValue: <T extends string | number | boolean>() => T;
+    getObjectData: () => IObjectData[];
 }
 
 export interface IContainerProps extends IComponentPropsBase<IContainerModel> {

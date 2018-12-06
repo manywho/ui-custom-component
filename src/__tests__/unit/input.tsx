@@ -26,6 +26,7 @@ describe('Input Component', () => {
                 onChange={null}
                 onEvent={null}
                 getContentValue={getContentValue}
+                getObjectData={null}
             />,
         );
         expect(wrapper.find('input')).toHaveLength(1);

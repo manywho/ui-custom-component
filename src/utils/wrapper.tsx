@@ -6,7 +6,9 @@ import {
     IContainerModel,
     IContainerProps,
     IManywho,
-} from './interfaces';
+    IObjectData,
+} from '../interfaces';
+import { objectDataHandler } from './proxy';
 
 const dedent: any = require('dedent');
 
@@ -82,14 +84,29 @@ export const component = (
         };
 
         const getContentValue = <T extends string | number | boolean>() => {
-            return (this.props.state && this.props.state.contentValue !== undefined ?
-                this.props.state.contentValue :
-                this.props.model.contentValue) as T;
+            const state = manywho.state.getComponent(id, flowKey);
+
+            return (state && state.contentValue !== undefined ?
+                state.contentValue :
+                model.contentValue) as T;
+        };
+
+        const getObjectData = () => {
+            const state = manywho.state.getComponent(id, flowKey);
+
+            const objectData = (state && state.objectData ?
+                state.objectData :
+                model.objectData);
+
+            return objectData ?
+                objectData.map((item: IObjectData) => new Proxy(item, objectDataHandler))
+                : null;
         };
 
         const props: IComponentProps = {
             ...getProps(id, parentId, flowKey),
             getContentValue,
+            getObjectData,
             onChange,
             onEvent,
             state: manywho.state.getComponent(id, flowKey),

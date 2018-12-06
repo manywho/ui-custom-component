@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IComponentProps, IManywho } from './interfaces';
-import { component } from './wrapper';
+import { component } from './utils/wrapper';
 
 declare const manywho: IManywho;
 

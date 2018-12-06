@@ -11,7 +11,8 @@
         "no-implicit-dependencies": false,
         "no-namespace": false,
         "no-var-requires": false,
-        "max-line-length": [true, 180]
+        "max-line-length": [true, 180],
+        "no-submodule-imports": false
     },
     "exclude": [
         "node_modules"
