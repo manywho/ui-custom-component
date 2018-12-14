@@ -3,7 +3,7 @@ import * as Adapter from 'enzyme-adapter-react-16';
 import * as React from 'react';
 import CustomInput from '../../input';
 import { IManywho } from '../../interfaces';
-import { component } from '../../wrapper';
+import { component } from '../../utils/wrapper';
 
 declare const manywho: IManywho;
 

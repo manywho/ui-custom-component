@@ -70,8 +70,6 @@ export const component = (
                     push,
                 );
             }
-
-            this.forceUpdate();
         };
 
         const onEvent = (callback?: () => void) => {
@@ -91,13 +89,7 @@ export const component = (
                 model.contentValue) as T;
         };
 
-        const getObjectData = () => {
-            const state = manywho.state.getComponent(id, flowKey);
-
-            const objectData = (state && state.objectData ?
-                state.objectData :
-                model.objectData);
-
+        const proxyObjectData = (objectData: IObjectData[]) => {
             return objectData ?
                 objectData.map((item: IObjectData) => new Proxy(item, objectDataHandler))
                 : null;
@@ -106,9 +98,9 @@ export const component = (
         const props: IComponentProps = {
             ...getProps(id, parentId, flowKey),
             getContentValue,
-            getObjectData,
             onChange,
             onEvent,
+            proxyObjectData,
             state: manywho.state.getComponent(id, flowKey),
         };
 
