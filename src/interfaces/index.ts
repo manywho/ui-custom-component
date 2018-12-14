@@ -38,23 +38,23 @@ export interface IManywho {
     log: Logger;
 }
 
+export interface IObjectDataProperty {
+    contentFormat: string | null;
+    contentType: string;
+    contentValue: string | number | boolean | null;
+    developerName: string;
+    objectData: IObjectData[] | null;
+    typeElementId: string | null;
+    typeElementPropertyId: string;
+}
+
 export interface IObjectData {
     developerName: string;
     externalId: string;
     internalId: string;
     isSelected: boolean;
     order: number;
-    properties: [
-        {
-            contentFormat: string | null;
-            contentType: string;
-            contentValue: string | number | boolean | null;
-            developerName: string;
-            objectData: IObjectData[] | null;
-            typeElementId: string | null;
-            typeElementPropertyId: string;
-        }
-    ];
+    properties: IObjectDataProperty[];
 }
 
 interface IObjectDataType {
@@ -165,6 +165,12 @@ interface IColumn {
     typeElementPropertyToDisplayId: string;
 }
 
+interface ITag {
+    developerName: string;
+    contentValue: string | boolean | number | null;
+    objectData: IObjectData[];
+}
+
 export interface IContainerModel extends IComponentIdProps {
     attributes: any;
     containerType: string;
@@ -175,7 +181,7 @@ export interface IContainerModel extends IComponentIdProps {
     isEditable: boolean;
     isEnabled: boolean;
     isVisible: boolean;
-    tags: any[];
+    tags: ITag[];
 }
 
 export interface IComponentModel {
@@ -204,7 +210,7 @@ export interface IComponentModel {
     contentType: string;
     componentType: string;
     developerName: string;
-    tags: any[] | null;
+    tags: ITag[] | null;
     objectDataRequest: IObjectDataRequest | null;
     imageUri: string | null;
     fileDataRequest: any | null;
@@ -297,7 +303,7 @@ export interface IComponentProps extends IComponentPropsBase<IComponentModel> {
     onEvent: (callback?: () => void) => void;
     onChange: (value: string | number | boolean | null, validate?: boolean, push?: boolean) => void;
     getContentValue: <T extends string | number | boolean>() => T;
-    proxyObjectData: (objectData: IObjectData[]) => any[];
+    getObjectData: (item: IComponentModel | State.IComponentValue) => any[];
 }
 
 export interface IContainerProps extends IComponentPropsBase<IContainerModel> {

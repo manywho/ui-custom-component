@@ -8,6 +8,8 @@ import {
     IManywho,
     IObjectData,
 } from '../interfaces';
+import * as State from '../interfaces/services/state';
+import { addProperties } from './objectData';
 import { objectDataHandler } from './proxy';
 
 const dedent: any = require('dedent');
@@ -89,18 +91,18 @@ export const component = (
                 model.contentValue) as T;
         };
 
-        const proxyObjectData = (objectData: IObjectData[]) => {
-            return objectData ?
-                objectData.map((item: IObjectData) => new Proxy(item, objectDataHandler))
+        const getObjectData = (item: any): any[] => {
+            return item.objectData ?
+                item.objectData.map((objectData: IObjectData) => addProperties(objectData))
                 : null;
         };
 
         const props: IComponentProps = {
             ...getProps(id, parentId, flowKey),
             getContentValue,
+            getObjectData,
             onChange,
             onEvent,
-            proxyObjectData,
             state: manywho.state.getComponent(id, flowKey),
         };
 
