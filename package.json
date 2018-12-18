@@ -52,7 +52,7 @@
     "tslint-loader": "3.6.0",
     "tslint-react": "^3.6.0",
     "typescript": "^3.1.3",
-    "webpack": "^4.20.2",
+    "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.9",
     "write-file-webpack-plugin": "4.4.1"
@@ -60,9 +60,10 @@
   "jest": {
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "./src/*.tsx",
+      "src/*.tsx",
+      "!src/index.tsx",
       "!**/node_modules/**",
-      "!./src/__test__/**/*.*"
+      "!src/__test__/**/*.*"
     ],
     "setupFiles": [
       "./mocks/manywho.js"
