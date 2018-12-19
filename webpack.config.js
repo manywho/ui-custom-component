@@ -63,6 +63,9 @@ module.exports = function() {
         ],
     }
 
+    if (!fs.existsSync('./build'))
+        fs.mkdirSync('./build');
+
     let template = fs.readFileSync('./template.html').toString();
     template = template
         .replace('{{tenantId}}', flow.tenantId)
