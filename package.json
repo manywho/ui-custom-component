@@ -10,7 +10,8 @@
     "upload": "node upload.js",
     "test-unit": "jest --watch",
     "test-integration": "testcafe-live chrome ./src/__tests__/integration",
-    "test-integration-remote": "testcafe-live remote ./src/__tests__/integration --qr-code"
+    "test-integration-remote": "testcafe-live remote ./src/__tests__/integration --qr-code",
+    "update": "node update.js"
   },
   "author": "Dell Boomi",
   "license": "MIT",
@@ -30,9 +31,11 @@
     "clipboardy": "^1.2.3",
     "colors": "^1.3.1",
     "css-loader": "0.28.11",
+    "download": "^7.1.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "fs-extra": "^7.0.1",
     "glob-promise": "^3.4.0",
     "inquirer": "^6.0.0",
     "inquirer-autocomplete-prompt": "^1.0.1",
@@ -41,12 +44,14 @@
     "mime-types": "^2.1.19",
     "ngrock-webpack-plugin": "0.0.2",
     "react-test-renderer": "^16.4.1",
+    "recursive-copy": "^2.0.9",
     "request-promise-native": "^1.0.5",
     "source-map-loader": "^0.2.3",
     "style-loader": "0.21.0",
     "testcafe": "^0.20.4",
     "testcafe-browser-provider-browserstack": "^1.5.0",
     "testcafe-live": "^0.1.3",
+    "three-way-merger": "^0.5.0",
     "ts-jest": "^23.10.4",
     "tslint": "^5.10.0",
     "tslint-loader": "3.6.0",
@@ -93,5 +98,8 @@
       "js": "custom-component.js",
       "css": "custom-component.css"
     }
-  }
+  },
+  "peerDependencies": {},
+  "bundledDependencies": [],
+  "optionalDependencies": {}
 }
