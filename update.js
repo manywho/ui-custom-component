@@ -27,7 +27,7 @@ const merger = require('three-way-merger');
         filter: (filename) => {
             if (filename.includes('interfaces') 
                 || filename.includes('src/utils')
-                || filename.includes('webpack')
+                || (filename.includes('webpack') && !process.argv.includes('-exclude-webpack'))
                 || filename === 'upload.js'
                 || filename === 'tslint.json'
                 || filename === 'tsconfig.json'

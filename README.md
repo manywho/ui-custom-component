@@ -7,7 +7,9 @@ A small `webpack` based boilerplate for creating custom Boomi Flow UI components
 
 ### Updating
 
-You can keep this copy upto date with the latest interfaces and build configurations by running the `npm run update` command
+You can keep this copy upto date with the latest interfaces and build configurations by running the `npm run update` command.
+
+Custom webpack configurations can be maintained by running `npm run update -- -exclude-webpack`.
 
 ## Included Components
 
