@@ -43,16 +43,6 @@ You can start the local development server with `npm start`. This will serve the
 
 The easiest way to test a custom component would be to create a custom player then add references to the `custom-components.js` and `custom-components.css` as custom resources, more information on loading custom resources can be found here: https://docs.manywho.com/adding-custom-javascript-and-stylesheets/
 
-By default, the local development server will be made accessible to the internet via [ngrok](https://ngrok.com/)
-
-ngrok will provide a url like `https://ad7c2b13.ngrok.io` that will point to `http://localhost:8080`, for example you would add the following as custom resources in a player:
-
-```
-customResources: ['https://ad7c2b13.ngrok.io/custom-component.js', 'https://ad7c2b13.ngrok.io/custom-component.css']
-```
-
-The ngrok url will be dislpayed in the console (just before the webpack output statistics)
-
 After making changes to your custom component you can refresh the browser running the flow for the changes to be picked up.
 
 ## Testing

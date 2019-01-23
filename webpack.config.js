@@ -1,8 +1,7 @@
 const path = require('path');
 const fs = require('fs');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const WriteFilePlugin = require('write-file-webpack-plugin');
-const NgrockWebpackPlugin = require('ngrock-webpack-plugin');
 const flow = require('./package.json').flow;
 
 module.exports = function() {
@@ -45,10 +44,10 @@ module.exports = function() {
                 },
                 { 
                     test:/\.css$/,
-                    use: ExtractTextPlugin.extract({
-                        fallback: "style-loader",
-                        use: "css-loader"
-                    }) 
+                    use: [
+                        MiniCssExtractPlugin.loader,
+                        "css-loader"
+                      ]
                 }
             ]
         },
@@ -58,8 +57,7 @@ module.exports = function() {
         },
         plugins: [
             new WriteFilePlugin(),
-            new ExtractTextPlugin("custom-component.css"),
-            new NgrockWebpackPlugin(),
+            new MiniCssExtractPlugin({ filename: "custom-component.css" })
         ],
     }
 

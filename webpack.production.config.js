@@ -1,5 +1,5 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const WriteFilePlugin = require('write-file-webpack-plugin');
 const flow = require('./package.json').flow;
 
@@ -40,10 +40,10 @@ module.exports = function(env) {
                 },
                 { 
                     test:/\.css$/,
-                    use: ExtractTextPlugin.extract({
-                        fallback: "style-loader",
-                        use: "css-loader"
-                    }) 
+                    use: [
+                        MiniCssExtractPlugin.loader,
+                        "css-loader"
+                      ]
                 }
             ]
         },
@@ -53,7 +53,7 @@ module.exports = function(env) {
         },
         plugins: [
             new WriteFilePlugin(),
-            new ExtractTextPlugin(flow.filenames.css),
+            new MiniCssExtractPlugin({ filename: flow.filenames.css })
         ],
     }
 
