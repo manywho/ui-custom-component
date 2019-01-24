@@ -304,6 +304,7 @@ export interface IComponentProps extends IComponentPropsBase<IComponentModel> {
     onChange: (value: string | number | boolean | null, validate?: boolean, push?: boolean) => void;
     getContentValue: <T extends string | number | boolean>() => T;
     getObjectData: (item: IComponentModel | State.IComponentValue) => any[];
+    getAttribute: (name: string) => string | number | boolean | null;
 }
 
 export interface IContainerProps extends IComponentPropsBase<IContainerModel> {

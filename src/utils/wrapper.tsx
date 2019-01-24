@@ -97,8 +97,23 @@ export const component = (
                 : null;
         };
 
+        const getAttribute = (name: string): string | number | boolean | null => {
+            if (model && model.attributes) {
+                const key = Object
+                    .keys(model.attributes)
+                    .filter((item) => manywho.utils.isEqual(item, name, true))[0];
+
+                if (key) {
+                    return model.attributes[key];
+                }
+            }
+
+            return null;
+        };
+
         const props: IComponentProps = {
             ...getProps(id, parentId, flowKey),
+            getAttribute,
             getContentValue,
             getObjectData,
             onChange,
