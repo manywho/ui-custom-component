@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Small webpack based boilerplate for getting started with Boomi Flow UI components",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/manywho/ui-custom-component.git"
+    "type": "git",
+    "url": "https://github.com/manywho/ui-custom-component.git"
   },
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,7 @@
   "dependencies": {
     "dedent": "0.7.0",
     "react": "16.3.2",
-    "react-dom": "16.3.2"
+    "react-dom": "16.3.3"
   },
   "devDependencies": {
     "@types/enzyme": "3.1.11",
