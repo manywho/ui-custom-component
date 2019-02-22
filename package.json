@@ -94,8 +94,8 @@
     }
   },
   "flow": {
-    "tenantId": "d1b3e73f-3f2a-4159-8fbb-ceb11a84e28d",
-    "id": "88b7b053-049b-402d-b614-597bed6a4b78",
+    "tenantId": "c5a50df2-f24b-4342-9fbd-1c91747ac0cf",
+    "id": "3f95386d-ee6c-447a-b863-a210fe4a4c22",
     "versionId": "",
     "filenames": {
       "js": "custom-component.js",

@@ -26,6 +26,6 @@ class CustomInput extends React.Component<IComponentProps> {
     }
 }
 
-manywho.component.register('custom-input', component(CustomInput));
+manywho.component.register('custom-input', component(CustomInput, true));
 
 export default CustomInput;

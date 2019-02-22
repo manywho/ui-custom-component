@@ -1,0 +1,25 @@
+.mw-bs .debug-component {
+    border: 1px solid #ccc;
+    padding: 0 0.5rem 0.5rem 0.5rem;
+}
+
+.mw-bs .debug-component > div:first-child {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-bottom: 1px solid #ccc;
+    margin: 0 -0.5rem 0.5rem -0.5rem;
+}
+
+.mw-bs .debug-component > div:first-child > * {
+    margin-right: 0.5rem;
+}
+
+.mw-bs .debug-component > div:first-child > span {
+    user-select: all;
+}
+
+.mw-bs .debug-component .modal-body {
+    max-height: calc(100vh - 212px);
+    overflow-y: auto;
+}
