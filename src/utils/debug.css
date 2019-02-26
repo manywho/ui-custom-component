@@ -1,3 +1,41 @@
+.modal-debug {
+    position: fixed;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.137);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    justify-content: center;
+}
+
+.modal-debug:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-debug > div {
+    width: 80vw;
+    max-height: 80vh;
+    align-self: center;
+    overflow-y: scroll;
+    position: absolute;
+    padding: 2em;
+    background: #ffffff;
+    color: #333333;
+}
+  
+.modal-close {
+    color: #aaa;
+    font-weight: bold;
+}
+
 .mw-bs .debug-component {
     border: 1px solid #ccc;
     padding: 0 0.5rem 0.5rem 0.5rem;
@@ -19,7 +57,8 @@
     user-select: all;
 }
 
-.mw-bs .debug-component .modal-body {
-    max-height: calc(100vh - 212px);
-    overflow-y: auto;
+.mw-bs .debug-component pre {
+    background: #eee;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
 }
