@@ -8,7 +8,7 @@ module.exports = function() {
     const config = {
         entry: "./src/index.tsx",
         output: {
-            filename: 'custom-component.js',
+            filename: flow.filenames.js,
             path: path.resolve(__dirname, 'build')
         },
         devtool: 'inline-source-map',
@@ -57,7 +57,7 @@ module.exports = function() {
         },
         plugins: [
             new WriteFilePlugin(),
-            new MiniCssExtractPlugin({ filename: "custom-component.css" })
+            new MiniCssExtractPlugin({ filename: flow.filenames.css })
         ],
     }
 
@@ -69,6 +69,8 @@ module.exports = function() {
         .replace('{{tenantId}}', flow.tenantId)
         .replace('{{flowId}}', flow.id)
         .replace('{{flowVersionId}}', flow.versionId)
+        .replace('{{filename-js}}', flow.filenames.js)
+        .replace('{{filename-css}}', flow.filenames.css)
     fs.writeFileSync('./build/index.html', template);
 
     return config;
