@@ -300,10 +300,30 @@ interface IComponentPropsBase<T> extends IComponentIdProps {
 
 export interface IComponentProps extends IComponentPropsBase<IComponentModel> {
     state: State.IComponentValue | null;
+    /**
+     * SYNC with the API to invoke any page conditions attached to this component
+     * @param callback Callback to fire after re-rendering
+     */
     onEvent: (callback?: () => void) => void;
+    /**
+     * Update this components local state. Scalar values only.
+     * @param value New content value
+     * @param validate Perform clientside validation, if the global setting is enabled
+     * @param push Inform other connected clients of the new value, if realtime collaboration is enabled
+     */
     onChange: (value: string | number | boolean | null, validate?: boolean, push?: boolean) => void;
+    /** Returns the component's state contentValue if defined, otherwise the component's model contentValue */
     getContentValue: <T extends string | number | boolean>() => T;
+    /**
+     * Get the ObjectData of the model / property. Each ObjectData entry is modified
+     * to include their properties addressable by name e.g. objectData.MyProperty
+     * @param item Component model of ObjectData property
+     */
     getObjectData: (item: IComponentModel | State.IComponentValue) => any[];
+    /**
+     * Get the value of a specific attribute attached to this component
+     * @param name Name of the attribute, case insensitive
+     */
     getAttribute: (name: string) => string | number | boolean | null;
 }
 

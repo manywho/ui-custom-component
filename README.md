@@ -27,6 +27,57 @@ Create the custom component in a new `.tsx` file, then re-export them in `index.
 This boillerplate includes 2 higher-order components, in `wrapper.tsx`, `container` and `component` that you can wrap your custom components with (see `input.tsx` for an example). These higher-order
 components will do some work fetching model, state, outcomes, etc for you which will then be passed down as `props` into your custom component.
 
+##### Component 
+
+When registering your custom component with the UI framework wrap it in the Component higher-order component
+
+```javascript
+manywho.component.register('custom-input', component(CustomInput));
+
+// Optionally set the debug mode to enabled, when running the flow in debug mode (`mode=DEBUG` in the query string)
+// links to to view the components model & state are rendered
+manywho.component.register('custom-input', component(CustomInput, true));
+```
+
+The `props` passed into a wrapped component will be of type [IComponentProps](https://github.com/manywho/ui-custom-component/blob/7424f50eaa8054b1ba6659d8d1d2ae2d1c8a23fe/src/interfaces/index.ts#L301)
+
+The higher-order component will do a lot of heavy lifting for you such as
+
+* Getting the model and local state
+* Setup debug rendering and debug logging
+* Provide helpers for propagating changes and events
+* Provide helpers for getting the current content value and objectdata
+
+**ObjectData**
+
+Calling `props.getObjectData` will return an array of ObjectData objects for the component. Each ObjectData object will be modified so you can access the properties by name.
+
+For example without using the Component higher-order component you would get the content value of an objectdata property by:
+
+```javascript
+manywho.utils.getObjectDataProperty(objectData[0].properties, 'PropertyName').contentValue;
+```
+
+After using `props.getObjectData`:
+
+```javascript
+objectData[0].PropertyName;
+```
+
+Properties can also be set
+
+```javascript
+objectData[0].PropertyName = 'New Value';
+```
+
+##### Container
+
+Container type components can also be wrapped in a higher-order component when be registered as well:
+
+```javascript
+manywho.component.registerContainer('custom-container', container(CustomContainer));
+```
+
 ## Debugging
 
 ### VSCode
