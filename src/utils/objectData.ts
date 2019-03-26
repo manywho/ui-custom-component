@@ -1,4 +1,7 @@
-import { IObjectData, IObjectDataProperty } from '../interfaces';
+import { IManywho, IObjectData, IObjectDataProperty } from '../interfaces';
+import { contentTypes } from '../interfaces/services/component';
+
+declare const manywho: IManywho;
 
 const objectDataProperties = ['developerName', 'externalId', 'internalId', 'properties', 'isSelected', 'order'];
 
@@ -30,8 +33,8 @@ export const addProperties = (objectData: IObjectData): IObjectData => {
                 configurable: true,
                 enumerable: true,
                 get: () => {
-                    if (property.objectData) {
-                        return property.objectData.map((item: IObjectData) => addProperties(item));
+                    if (manywho.utils.isEqual(property.contentType, contentTypes.object, true) || manywho.utils.isEqual(property.contentType, contentTypes.list, true)) {
+                        return (property.objectData || []).map((item: IObjectData) => addProperties(item));
                     } else {
                         return property.contentValue;
                     }
