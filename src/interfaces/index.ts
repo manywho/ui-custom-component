@@ -1,3 +1,5 @@
+/// <reference types="jquery" />
+
 import { Logger, LogLevel } from 'loglevel';
 import * as Ajax from './services/ajax';
 import * as Authorization from './services/authorization';
@@ -105,7 +107,7 @@ interface ICulture {
     variant: string;
 }
 
-interface IListFilterWhere {
+export interface IListFilterWhere {
     columnName: string;
     criteriaType: CriteriaType;
     value: string;
@@ -312,6 +314,21 @@ export interface IComponentProps extends IComponentPropsBase<IComponentModel> {
      * @param push Inform other connected clients of the new value, if realtime collaboration is enabled
      */
     onChange: (value: string | number | boolean | null, validate?: boolean, push?: boolean) => void;
+
+    /**
+     * Update this components local state with selected ObjectData
+     * @param items ObjectData to select. exeternalId string, IObjectData object, or an array of either
+     * @param validate Perform clientside validation, if the global setting is enabled
+     * @param push Inform other connected clients of the new value, if realtime collaboration is enabled
+     */
+    onSelect: (items: string | IObjectData | Array<(string | IObjectData)>, validate?: boolean, push?: boolean) => void;
+
+    /**
+     * Fire the components ObjectData or FileData request
+     */
+    onLoad: (search?: string, page?: number, limit?: number, sortedBy?: string, orderByDirection?: string, wheres?: IListFilterWhere[])
+        => JQuery.Promise3<void, never, never, never, never, never, never, never, never>;
+
     /** Returns the component's state contentValue if defined, otherwise the component's model contentValue */
     getContentValue: <T extends string | number | boolean>() => T;
     /**

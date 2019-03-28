@@ -5,12 +5,14 @@ import {
     IComponentProps,
     IContainerModel,
     IContainerProps,
+    IListFilterWhere,
     IManywho,
     IObjectData,
     IObjectDataProperty,
+    IObjectDataRequest,
 } from '../interfaces';
 import { debugComponent } from './debug';
-import { addProperties } from './objectData';
+import { addProperties, removeProperties } from './objectData';
 import { objectDataHandler } from './proxy';
 
 const dedent: any = require('dedent');
@@ -62,17 +64,51 @@ export const component = (
     return ({ id, parentId, flowKey }: IComponentIdProps) => {
         const model: IComponentModel = manywho.model.getComponent(id, flowKey);
 
+        const validateState = (push: boolean = true) => {
+            const state = manywho.state.getComponent(id, flowKey);
+            manywho.state.setComponent(
+                id,
+                manywho.validation.validate(model, state, flowKey),
+                flowKey,
+                push,
+            );
+        };
+
         const onChange = (value: string | number | boolean | null, validate: boolean = true, push: boolean = true) => {
             manywho.state.setComponent(id, { contentValue: value }, flowKey, push);
 
             if (validate) {
-                const state = manywho.state.getComponent(id, flowKey);
-                manywho.state.setComponent(
-                    id,
-                    manywho.validation.validate(model, state, flowKey),
-                    flowKey,
-                    push,
-                );
+                validateState(push);
+            }
+        };
+
+        const onSelect = (items: string | IObjectData | Array<(string | IObjectData)>, validate: boolean = true, push: boolean = true) => {
+            if (!Array.isArray(items)) {
+                items = [items];
+            }
+
+            if (Array.isArray(items) && !model.isMultiSelect && items.length > 1) {
+                items = [items[0]];
+            }
+
+            manywho.state.setComponent(
+                id,
+                {
+                    objectData: removeProperties((items || []).map((item) => {
+                        if (typeof item === 'string') {
+                            item = model.objectData.filter((x) => manywho.utils.isEqual(x.externalId, item as string, true))[0];
+                        }
+
+                        const selectedItem: IObjectData = JSON.parse(JSON.stringify(item));
+                        selectedItem.isSelected = true;
+                        return selectedItem;
+                    })),
+                },
+                flowKey,
+                push);
+
+            if (validate) {
+                validateState(push);
             }
         };
 
@@ -83,6 +119,36 @@ export const component = (
                 flowKey,
                 callback,
             );
+        };
+
+        const onLoad = (
+            search: string = null,
+            page: number = 0,
+            limit: number = 0,
+            orderBy: string = null,
+            orderByDirection: string = 'ASC',
+            wheres: IListFilterWhere[] = null,
+        ) => {
+            const key = model.objectDataRequest ? 'objectDataRequest' : model.fileDataRequest ? 'fileDataRequest' : null;
+
+            if (key) {
+                const request: IObjectDataRequest = JSON.parse(JSON.stringify(model[key]));
+
+                if (wheres) {
+                    request.listFilter.where = request.listFilter.where.concat(wheres);
+                }
+
+                return manywho.engine[key](
+                    id,
+                    request,
+                    flowKey,
+                    limit,
+                    search,
+                    orderBy,
+                    orderByDirection,
+                    page,
+                );
+            }
         };
 
         const getContentValue = <T extends string | number | boolean>() => {
@@ -120,6 +186,8 @@ export const component = (
             getObjectData,
             onChange,
             onEvent,
+            onLoad,
+            onSelect,
             state: manywho.state.getComponent(id, flowKey),
         };
 
