@@ -1,7 +1,8 @@
+// tslint:disable-next-line:no-reference-import
 /// <reference types="react" />
 /// <reference types="jquery" />
 import * as React from 'react';
-import { IComponentProps } from '..';
+import { IComponentProps, IContainerProps } from '..';
 /**
  * @hidden
  */
@@ -19,31 +20,38 @@ export declare const contentTypes: {
     object: string;
     list: string;
 };
+
+type componentWrapper = (props: IComponentProps) => JSX.Element;
+type containerWrapper = (props: IContainerProps) => JSX.Element;
+
 /**
  * Register a React component, that can be fetched later by Name. Optionally provide aliases that will return the same component
  * @param name Name to register the component with
  * @param component
  * @param alias Extra names that can also be used to fetch the component later
  */
-export declare const register: (name: string, component: typeof React.Component | typeof React.StatelessComponent, alias?: string[]) => void;
+export declare const register: (
+    name: string,
+    component: typeof React.Component | React.FunctionComponent | componentWrapper,
+    alias?: string[]) => void;
 /**
  * Register a React component, the name will be prepended with `mw-`. An alias of `mw-items-container` will also be added
  * @param name
  * @param component
  */
-export declare const registerItems: (name: string, component: typeof React.Component | typeof React.StatelessComponent) => void;
+export declare const registerItems: (name: string, component: typeof React.Component | React.FunctionComponent) => void;
 /**
  * Add an alias for a name
  * @param alias
  * @param name Name of a previously registered component
  */
 export declare const registerAlias: (alias: string, name: string) => void;
-/**y
+/**
  * Register a React component as a container, the name will be prepended with `mw-`
  * @param name
  * @param component
  */
-export declare const registerContainer: (name: string, component: typeof React.Component | typeof React.StatelessComponent) => void;
+export declare const registerContainer: (name: string, component: typeof React.Component | React.FunctionComponent | containerWrapper) => void;
 /**
  * Get the previously registered component based on the models `componentType` or `containerType`
  * @param model
@@ -60,12 +68,12 @@ export declare const getByName: any;
  * @param id
  * @param flowKey
  */
-export declare const getChildComponents: (children: any[], id: string, flowKey: string) => React.DetailedReactHTMLElement<{
+export declare const getChildComponents: (children: any[], id: string, flowKey: string) => Array<React.DetailedReactHTMLElement<{
     flowKey: string;
     id: any;
     parentId: string;
     key: any;
-}, HTMLElement>[];
+}, HTMLElement>>;
 /**
  * Transform the outcome models into outcome components
  * @param outcomes
