@@ -167,10 +167,13 @@ interface IColumn {
     typeElementPropertyToDisplayId: string;
 }
 
-interface ITag {
+export interface ITag {
     developerName: string;
     contentValue: string | boolean | number | null;
     objectData: IObjectData[];
+    contentType: string;
+    typeElementId: string;
+    valueElementId: string;
 }
 
 export interface IContainerModel extends IComponentIdProps {
@@ -342,6 +345,12 @@ export interface IComponentProps extends IComponentPropsBase<IComponentModel> {
      * @param name Name of the attribute, case insensitive
      */
     getAttribute: (name: string) => string | number | boolean | null;
+
+    /**
+     * Get a tag associated with this component
+     * @param name Name of the tag, case insensitive
+     */
+    getTag: (name: string) => ITag;
 }
 
 export interface IContainerProps extends IComponentPropsBase<IContainerModel> {

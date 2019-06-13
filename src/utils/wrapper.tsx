@@ -10,6 +10,7 @@ import {
     IObjectData,
     IObjectDataProperty,
     IObjectDataRequest,
+    ITag,
 } from '../interfaces';
 import { debugComponent } from './debug';
 import { addProperties, removeProperties } from './objectData';
@@ -179,11 +180,20 @@ export const component = (
             return null;
         };
 
+        const getTag = (name: string): ITag => {
+            if (model && model.tags) {
+                return model.tags.filter((tag) => manywho.utils.isEqual(tag.developerName, name, true))[0];
+            }
+
+            return null;
+        };
+
         const props: IComponentProps = {
             ...getProps(id, parentId, flowKey),
             getAttribute,
             getContentValue,
             getObjectData,
+            getTag,
             onChange,
             onEvent,
             onLoad,

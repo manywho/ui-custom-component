@@ -30,6 +30,7 @@ describe('Input Component', () => {
                 getContentValue={getContentValue}
                 getObjectData={null}
                 getAttribute={null}
+                getTag={null}
             />,
         );
         expect(wrapper.find('input')).toHaveLength(1);
