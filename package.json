@@ -41,7 +41,7 @@
     "enzyme-adapter-react-16": "1.9.1",
     "fs-extra": "7.0.1",
     "glob-promise": "3.4.0",
-    "inquirer": "6.0.0",
+    "inquirer": "6.5.2",
     "inquirer-autocomplete-prompt": "1.0.1",
     "jest": "24.1.0",
     "jest-config": "24.1.0",
