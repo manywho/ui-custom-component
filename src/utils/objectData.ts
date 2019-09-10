@@ -33,7 +33,7 @@ export const addProperties = (objectData: IObjectData): IObjectData => {
                 configurable: true,
                 enumerable: true,
                 get: () => {
-                    if (manywho.utils.isEqual(property.contentType, contentTypes.object, true) || manywho.utils.isEqual(property.contentType, contentTypes.list, true)) {
+                    if (manywho.utils.isEqual(property.contentType, 'ContentObject', true) || manywho.utils.isEqual(property.contentType, 'ContentList', true)) {
                         return (property.objectData || []).map((item: IObjectData) => addProperties(item));
                     } else {
                         return property.contentValue;
