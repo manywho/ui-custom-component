@@ -53,7 +53,7 @@
     "source-map-loader": "0.2.3",
     "style-loader": "0.21.0",
     "testcafe": "1.0.1",
-    "testcafe-browser-provider-browserstack": "1.8.0",
+    "testcafe-browser-provider-browserstack": "1.9.0",
     "testcafe-live": "0.1.4",
     "three-way-merger": "0.5.0",
     "ts-jest": "24.0.0",
